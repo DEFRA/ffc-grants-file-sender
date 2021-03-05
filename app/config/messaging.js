@@ -6,15 +6,13 @@ const sharedConfig = {
   useCredentialChain: process.env.NODE_ENV === 'production'
 }
 
-const msgTypePrefix = 'uk.gov.ffc.grants'
-
 module.exports = {
-  fixmeQueue: {
-    address: process.env.FIXME_QUEUE_ADDRESS,
-    type: FIXME,
+  fileCreatedSubscription: {
+    address: process.env.FILE_CREATED_SUBSCRIPTION_ADDRESS,
+    topic: process.env.FILE_CREATED_TOPIC_ADDRESS,
+    type: 'subscription',
     ...sharedConfig
   },
-  fixmeMsgType: `${msgTypePrefix}.fixme.fixme`,
+  notificationMsgType: 'uk.gov.ffc.grants.file.created',
   msgSrc: 'ffc-grants-file-sender'
 }
-
