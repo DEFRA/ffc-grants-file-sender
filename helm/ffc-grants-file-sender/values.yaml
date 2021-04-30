@@ -13,6 +13,10 @@ azureIdentity:
 containerConfigMap:
   name: ffc-grants-file-sender-config-map
 
+containerSecret:
+  name: ffc-grants-file-sender-container-secret
+  type: Opaque
+
 deployment:
   restartPolicy: Always
   priorityClassName: default
@@ -34,6 +38,13 @@ container:
   messageQueueHost: dummy
   fileCreatedTopicAddress: file-created
   fileCreatedSubscriptionAddress: file-sender
+  blobStorageConnectionString: blobby-blob
+  blobStorageContainerName: not-a-real-container
+  sharePointSiteId: not-a-real-value
+  sharePointTenantId: not-a-real-value
+  sharePointClientId: not-a-real-value
+  sharePointClientSecret: not-a-real-value
+  sharePointDocumentLibraryId: not-a-real-value
 
 livenessProbe:
   path: /healthz
