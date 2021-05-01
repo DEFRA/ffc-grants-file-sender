@@ -18,7 +18,6 @@
     "@hapi/wreck": "^17.1.0",
     "@pnp/nodejs-commonjs": "^2.3.0",
     "applicationinsights": "^1.8.10",
-    "ffc-messaging": "^2.1.1"
     "ffc-protective-monitoring": "^1.0.0",
     "ffc-messaging": "^2.1.1",
     "joi": "^17.4.0"
