@@ -1,5 +1,4 @@
 jest.mock('ffc-messaging')
-jest.mock('../../../../../app/services/protective-monitoring-service')
 const ffcMessaging = require('ffc-messaging')
 ffcMessaging.MessageSender = jest.fn().mockImplementation(() => {
   return {
