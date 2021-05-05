@@ -11,4 +11,7 @@ describe('get appInsight setup defined', () => {
   test('logException should run', () => {
     expect(appInsight.logException(new Error(''), '12341234')).toBe(undefined)
   })
+  test('logException should not throw error', () => {
+    expect(appInsight.logException(null, null)).toBe(undefined)
+  })
 })
