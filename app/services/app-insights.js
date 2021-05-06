@@ -15,7 +15,8 @@ function logException (error, sessionId) {
     exception: error ?? new Error('unknown'),
     properties: {
       sessionId: sessionId || ''
-    }
+    },
+    metrics: { isFileUpload: true }
   })
 }
 module.exports = { setup, logException }
