@@ -27,7 +27,6 @@ describe('Upload to sharepoint tests', () => {
     const uploadToSharepoint = require('../../../../../app/messaging/upload-to-sharepoint')
     expect(uploadToSharepoint).toBeDefined()
   })
-
   test('Should not throw error', () => {
     const uploadToSharepoint = require('../../../../../app/messaging/upload-to-sharepoint')
     expect(uploadToSharepoint('', fileCreatedReceiver)).toBeDefined()

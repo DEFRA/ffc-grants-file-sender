@@ -63,8 +63,8 @@ module.exports = async function (msg, fileCreatedReceiver) {
     await protectiveMonitoringServiceSendEvent(msg.correlationId, 'FTF-FILE-SENT-TO-SHAREPOINT', '0706')
   } catch (err) {
     appInsights.logException(err, msg?.correlationId)
+    await fileCreatedReceiver.abandonMessage(msg)
     console.error('Unable to process message')
     console.error(err)
-    await fileCreatedReceiver.abandonMessage(msg)
   }
 }
