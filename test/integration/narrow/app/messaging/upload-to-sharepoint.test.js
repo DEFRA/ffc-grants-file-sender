@@ -1,4 +1,7 @@
 
+afterEach(() => {
+  jest.clearAllMocks()
+})
 describe('Upload to sharepoint tests', () => {
   jest.mock('../../../../../app/services/protective-monitoring-service')
   jest.mock('../../../../../app/config/sharepoint')
@@ -7,6 +10,8 @@ describe('Upload to sharepoint tests', () => {
   const wreck = require('@hapi/wreck')
   wreck.put = jest.fn(async (url, data) => { return null })
   const mockSendEvent = jest.fn()
+  const appInsights = require('../../../../../app/services/app-insights')
+  appInsights.logException = jest.fn((_err, _sessionId) => {})
   jest.mock('ffc-protective-monitoring', () => {
     return {
       PublishEvent: jest.fn().mockImplementation(() => {
@@ -26,5 +31,10 @@ describe('Upload to sharepoint tests', () => {
   test('Should not throw error', () => {
     const uploadToSharepoint = require('../../../../../app/messaging/upload-to-sharepoint')
     expect(uploadToSharepoint('', fileCreatedReceiver)).toBeDefined()
+  })
+  test('Should throw error', async () => {
+    const uploadToSharepoint = require('../../../../../app/messaging/upload-to-sharepoint')
+    await expect(uploadToSharepoint('', null)).rejected
+    expect(appInsights.logException).toHaveBeenCalledTimes(1)
   })
 })

@@ -4,7 +4,7 @@ const { BlobServiceClient } = require('@azure/storage-blob')
 const sharepointConfig = require('../config/sharepoint')
 const blobStorageConfig = require('../config/blobStorage')
 const wreck = require('@hapi/wreck')
-
+const appInsights = require('../services/app-insights')
 async function downloadFromBlobStorage (filename) {
   const blobServiceClient = BlobServiceClient.fromConnectionString(blobStorageConfig.connectionStr)
   const containerClient = blobServiceClient.getContainerClient(blobStorageConfig.containerName)
@@ -62,6 +62,7 @@ module.exports = async function (msg, fileCreatedReceiver) {
     await fileCreatedReceiver.completeMessage(msg)
     await protectiveMonitoringServiceSendEvent(msg.correlationId, 'FTF-FILE-SENT-TO-SHAREPOINT', '0706')
   } catch (err) {
+    appInsights.logException(err, msg?.correlationId)
     console.error('Unable to process message')
     console.error(err)
     await fileCreatedReceiver.abandonMessage(msg)
