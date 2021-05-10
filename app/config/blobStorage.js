@@ -2,12 +2,14 @@ const Joi = require('joi')
 
 // Define config schema
 const schema = Joi.object({
-  connectionStr: Joi.string().required(),
+  env: Joi.string().valid('development', 'test', 'production').default('development'),
+  connectionStr: Joi.string().when('env', { is: 'production', then: Joi.optional(), otherwise: Joi.required() }),
   containerName: Joi.string().required()
 })
 
 // Build config
 const config = {
+  env: process.env.NODE_ENV,
   connectionStr: process.env.BLOB_STORAGE_CONNECTION_STRING,
   containerName: process.env.BLOB_STORAGE_CONTAINER_NAME
 }

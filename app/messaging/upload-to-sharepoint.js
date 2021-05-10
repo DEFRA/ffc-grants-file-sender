@@ -5,6 +5,7 @@ const sharepointConfig = require('../config/sharepoint')
 const blobStorageConfig = require('../config/blobStorage')
 const wreck = require('@hapi/wreck')
 const appInsights = require('../services/app-insights')
+
 async function downloadFromBlobStorage (filename) {
   const blobServiceClient = BlobServiceClient.fromConnectionString(blobStorageConfig.connectionStr)
   const containerClient = blobServiceClient.getContainerClient(blobStorageConfig.containerName)
