@@ -4,6 +4,7 @@ const Joi = require('joi')
 const schema = Joi.object({
   env: Joi.string().valid('development', 'test', 'production').default('development'),
   connectionStr: Joi.string().when('env', { is: 'production', then: Joi.optional(), otherwise: Joi.required() }),
+  storageAccountName: Joi.string().when('env', { is: 'production', then: Joi.required(), otherwise: Joi.optional() }),
   containerName: Joi.string().required()
 })
 
@@ -11,6 +12,7 @@ const schema = Joi.object({
 const config = {
   env: process.env.NODE_ENV,
   connectionStr: process.env.BLOB_STORAGE_CONNECTION_STRING,
+  storageAccountName: process.env.BLOB_STORAGE_ACCOUNT_NAME,
   containerName: process.env.BLOB_STORAGE_CONTAINER_NAME
 }
 
