@@ -21,3 +21,4 @@ services:
       SHAREPOINT_CLIENT_SECRET: ${SHAREPOINT_CLIENT_SECRET:-notset}
       SHAREPOINT_DOCUMENT_LIBRARY_ID: ${SHAREPOINT_DOCUMENT_LIBRARY_ID:-notset}
       BLOB_STORAGE_CONNECTION_STRING: ${BLOB_STORAGE_CONNECTION_STRING:-DefaultEndpointsProtocol=https;AccountName=dummy;AccountKey=dummy;EndpointSuffix=core.windows.net}
+      USE_BLOB_STORAGE_CONNECTION_STRING: "true"

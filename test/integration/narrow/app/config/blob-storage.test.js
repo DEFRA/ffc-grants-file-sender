@@ -15,18 +15,18 @@ describe('Config blobStorage', () => {
     const mockcontainerName = 'mock-containerName'
     process.env.BLOB_STORAGE_CONNECTION_STRING = mockconnectionStr
     process.env.BLOB_STORAGE_CONTAINER_NAME = mockcontainerName
-    const spreadsheetConfig = require('../../../../../app/config/blobStorage')
+    const spreadsheetConfig = require('../../../../../app/config/blob-storage')
     expect(spreadsheetConfig.connectionStr).toBe(mockconnectionStr)
     expect(spreadsheetConfig.containerName).toBe(mockcontainerName)
   })
 
   test('Connection String undefined throws error', () => {
     process.env.BLOB_STORAGE_CONNECTION_STRING = undefined
-    expect(() => require('../../../../../app/config/blobStorage')).toThrow()
+    expect(() => require('../../../../../app/config/blob-storage')).toThrow()
   })
 
   test('Connection Name undefined throws error', () => {
     process.env.BLOB_STORAGE_CONTAINER_NAME = undefined
-    expect(() => require('../../../../../app/config/blobStorage')).toThrow()
+    expect(() => require('../../../../../app/config/blob-storage')).toThrow()
   })
 })

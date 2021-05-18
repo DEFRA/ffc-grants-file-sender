@@ -44,7 +44,8 @@ container:
   protectiveMonitoringUrl:
   blobStorageAccountName: blob-account
   blobStorageContainerName: not-a-real-container
-  blobStorageConnectionString:
+  blobStorageConnectionString: dummy
+  useBlobStorageConnectionString: false
   sharePointSiteId: not-a-real-value
   sharePointTenantId: not-a-real-value
   sharePointClientId: not-a-real-value

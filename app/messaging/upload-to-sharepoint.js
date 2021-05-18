@@ -3,7 +3,7 @@ const { AdalFetchClient } = require('@pnp/nodejs-commonjs')
 const sharepointConfig = require('../config/sharepoint')
 const wreck = require('@hapi/wreck')
 const appInsights = require('../services/app-insights')
-const { blobContainerClient } = require('../services/blob-service')
+const { blobContainerClient } = require('../services/blob-storage')
 
 async function downloadFromBlobStorage (filename) {
   const blockBlobClient = blobContainerClient.getBlockBlobClient(filename)

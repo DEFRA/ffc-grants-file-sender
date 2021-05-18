@@ -1,9 +1,9 @@
 const { DefaultAzureCredential } = require('@azure/identity')
 const { BlobServiceClient } = require('@azure/storage-blob')
-const config = require('../config/blobStorage')
+const config = require('../config/blob-storage')
 let blobServiceClient
 
-if (config.connectionStr) {
+if (config.useConnectionStr) {
   console.log('Using connection string for BlobServiceClient')
   blobServiceClient = BlobServiceClient.fromConnectionString(config.connectionStr)
 } else {
