@@ -30,8 +30,8 @@ deployment:
   replicas: 2
   minReplicas: 2
   maxReplicas: 3
-  cpuThreshold: 60
-  memoryThreshold: 60
+  cpuThreshold: 80
+  memoryThreshold: 80
 
 container:
   imagePullPolicy: IfNotPresent
