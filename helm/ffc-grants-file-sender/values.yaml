@@ -50,11 +50,12 @@ container:
   blobStorageContainerName: not-a-real-container
   blobStorageConnectionString: dummy
   useBlobStorageConnectionString: false
-  sharePointSiteId: not-a-real-value
+  sharePointHostname: not-a-real-value
+  sharePointSitePath: not-a-real-value
   sharePointTenantId: not-a-real-value
   sharePointClientId: not-a-real-value
   sharePointClientSecret: not-a-real-value
-  sharePointDocumentLibraryId: not-a-real-value
+  sharePointDocumentLibrary: not-a-real-value
 
 livenessProbe:
   path: /healthz
