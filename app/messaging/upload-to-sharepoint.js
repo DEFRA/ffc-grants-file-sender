@@ -17,6 +17,14 @@ module.exports = async function (msg, fileCreatedReceiver) {
     await fileCreatedReceiver.completeMessage(msg)
     await protectiveMonitoringServiceSendEvent(msg.correlationId, 'FTF-FILE-SENT-TO-SHAREPOINT', '0706')
   } catch (err) {
+    appInsights.trackEvent({ name: 'Sharepoint Upload Failed' })
+    appInsights.trackMetric({
+      name: 'Sharepoint Upload Failed',
+      correlationId: msg?.correlationId,
+      error: err,
+      filename: msg.body.filename,
+      location: msg.body.uploadLocation
+    })
     appInsights.logException(err, msg?.correlationId)
     await fileCreatedReceiver.abandonMessage(msg)
     console.error('Unable to process message')
