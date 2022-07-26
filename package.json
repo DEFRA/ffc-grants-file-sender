@@ -20,7 +20,7 @@
     "@pnp/nodejs-commonjs": "^2.13.0",
     "applicationinsights": "^1.8.10",
     "ffc-messaging": "^2.4.0",
-    "ffc-protective-monitoring": "^1.0.0",
+    "ffc-protective-monitoring": "^1.0.3",
     "joi": "^17.4.3"
   },
   "overrides": {
