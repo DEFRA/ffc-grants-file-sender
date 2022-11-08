@@ -2,7 +2,7 @@ const config = require('../config/sharepoint')
 const { AdalFetchClient } = require('@pnp/nodejs-commonjs')
 const wreck = require('@hapi/wreck')
 
-console.log('config values', config.tenantId, config.clientId, config.clientSecret)
+console.log('config values', config, config.tenantId, config.clientId, config.clientSecret)
 
 const tokenClient = new AdalFetchClient(config.tenantId, config.clientId, config.clientSecret) // tenantid not set
 const msGraphURL = 'https://graph.microsoft.com/v1.0/sites/'
