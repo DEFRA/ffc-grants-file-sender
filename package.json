@@ -19,7 +19,7 @@
     "@hapi/wreck": "^17.1.0",
     "@pnp/nodejs-commonjs": "^2.13.0",
     "applicationinsights": "^1.8.10",
-    "ffc-messaging": "^2.5.2",
+    "ffc-messaging": "^2.6.1",
     "ffc-protective-monitoring": "^1.0.3",
     "joi": "^17.4.3"
   },
