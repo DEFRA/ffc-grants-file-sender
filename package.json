@@ -17,7 +17,7 @@
     "@azure/storage-blob": "^12.12.0",
     "@hapi/hapi": "^20.2.2",
     "@hapi/wreck": "^17.1.0",
-    "@pnp/nodejs-commonjs": "^2.15.0",
+    "@pnp/nodejs-commonjs": "^3.0.0-v3nightly.20220108",
     "applicationinsights": "^1.8.10",
     "ffc-messaging": "^2.5.2",
     "ffc-protective-monitoring": "^1.0.3",
