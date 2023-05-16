@@ -5,6 +5,6 @@ ignore:
   SNYK-JS-FASTXMLPARSER-3325616:
     - '*':
         reason: None Given
-        expires: 2023-03-31T10:54:19.529Z
-        created: 2023-03-01T10:54:19.531Z
+        expires: 2023-06-14T09:06:00.336Z
+        created: 2023-05-15T09:06:00.343Z
 patch: {}
