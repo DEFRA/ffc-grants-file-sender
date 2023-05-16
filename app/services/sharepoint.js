@@ -9,6 +9,7 @@ let documentLibraryId = null
 
 async function setup () {
   console.log('Getting SharePoint Site and Document Library ID ...')
+  console.log('tokenClient:', tokenClient);
   const accessToken = (await tokenClient.acquireToken()).accessToken
   const siteIdEndpoint = msGraphURL + config.hostname + ':/' + config.sitePath
 
@@ -16,7 +17,7 @@ async function setup () {
     siteIdEndpoint,
     { headers: { Authorization: `Bearer ${accessToken}` }, json: true }
   )
-
+  console.log('siteIdResponse: ', siteIdResponse);
   siteId = siteIdResponse.payload.id
 
   const drivesEndpoint = msGraphURL + siteId + '/drives'
@@ -25,7 +26,8 @@ async function setup () {
     drivesEndpoint,
     { headers: { Authorization: `Bearer ${accessToken}` }, json: true }
   )
-
+  console.log('drivesResponse: ', drivesResponse);
+  console.log('config.documentLibrary: ', config.documentLibrary);
   documentLibraryId = drivesResponse.payload.value.find(drive => drive.name === config.documentLibrary).id
   console.log('Done')
 }
