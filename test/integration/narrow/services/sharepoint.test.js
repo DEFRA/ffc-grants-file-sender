@@ -92,20 +92,20 @@ describe('SharePoint functions', () => {
 	});
 
 	describe('setup', () => {
-		// it.only('should get SharePoint Site and Document Library ID', async () => {
-		// 	await setup()
-		// 	// expect(AsalFetchSpy).toHaveBeenCalledTimes(1)
-		// 	expect(true).toBe(true)
-		// 	// expect(get).toHaveBeenCalledWith(
-		// 	// 	`https://graph.microsoft.com/v1.0/sites/${config.hostname}:/${config.sitePath}`,
-		// 	// );
-		// 	// expect(mockFn).toHaveBeenCalled()
-		// 	// expect(wreck.get).toHaveBeenCalledWith(
-		// 	// 	`https://graph.microsoft.com/v1.0/sites/${siteId}/drives`,
-		// 	// );
-		// 	// expect(siteId).toEqual('site_id');
-		// 	// expect(documentLibraryId).toEqual('drive_id');
-		// })
+		it('should get SharePoint Site and Document Library ID', async () => {
+			await setup()
+			// expect(AsalFetchSpy).toHaveBeenCalledTimes(1)
+			expect(true).toBe(true)
+			// expect(get).toHaveBeenCalledWith(
+			// 	`https://graph.microsoft.com/v1.0/sites/${config.hostname}:/${config.sitePath}`,
+			// );
+			// expect(mockFn).toHaveBeenCalled()
+			// expect(wreck.get).toHaveBeenCalledWith(
+			// 	`https://graph.microsoft.com/v1.0/sites/${siteId}/drives`,
+			// );
+			// expect(siteId).toEqual('site_id');
+			// expect(documentLibraryId).toEqual('drive_id');
+		})
 	})
 
 	// describe('uploadFile', () => {
