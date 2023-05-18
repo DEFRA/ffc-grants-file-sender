@@ -1,5 +1,4 @@
 const { expect } = require('@jest/globals')
-const config = require('../../../../app/config/sharepoint')
 const { setup, uploadFile } = require('../../../../app/services/sharepoint')
 
 jest.mock('@pnp/nodejs-commonjs', () => {
@@ -17,21 +16,19 @@ jest.mock('@pnp/nodejs-commonjs', () => {
 	}
 })
 
-jest.mock('@hapi/wreck', () => {
-	return {
-		get: () => ({
-				payload: {
-					id: 'site_id',
-					value: [
-						{
-							id: 'drive_id',
-							name: 'document_library'
-						}
-					]
-				}
-			}),
-		put: () => {}
-		}
+const wreck = require('@hapi/wreck')
+const hapiGetSpy = jest.spyOn(wreck, 'get').mockResolvedValue({
+	payload: {
+		id: 'site_id',
+		value: [
+			{
+				id: 'drive_id',
+				name: 'document_library'
+			}
+		]
+	}
+})
+const hapiPutSpy = jest.spyOn(wreck, 'put').mockResolvedValue({
 })
 
 jest.mock('../../../../app/config/sharepoint', () => {
@@ -48,23 +45,30 @@ jest.mock('../../../../app/config/sharepoint', () => {
 
 
 describe('SharePoint functions', () => {
-	beforeEach(() => {
-		jest.resetAllMocks()
+	beforeEach(async () => {
+		jest.mock('@hapi/wreck')
+		jest.mock('@pnp/nodejs-commonjs')
 	})
 
-	afterAll(() => {
+	afterAll(async () => {
 		jest.restoreAllMocks();
 	});
 
 	describe('setup', () => {
-		it('should be defined', async () => {
-			expect(setup).toBeDefined()
+		it('should run and call wreck.get', async () => {
+			await setup();
+			expect(hapiGetSpy).toHaveBeenCalledTimes(2)
 		})
 	})
 
 	describe('uploadFile', () => {
-		it('should be defined', async () => {
-			expect(uploadFile).toBeDefined()
+		it('should run and call wreck.put with the correct params', async () => {
+			const buffer = Buffer.from('test')
+			const filename = 'test.txt'
+			const uploadLocation = 'test'
+
+			await uploadFile(buffer, filename, uploadLocation);
+			expect(hapiPutSpy).toHaveBeenCalledTimes(1)
 		})
 	})
 

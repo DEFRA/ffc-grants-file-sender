@@ -17,7 +17,7 @@ async function setup () {
     siteIdEndpoint,
     { headers: { Authorization: `Bearer ${accessToken}` }, json: true }
   )
-  console.log('siteIdResponse: ', siteIdResponse);
+
   siteId = siteIdResponse.payload.id
 
   const drivesEndpoint = msGraphURL + siteId + '/drives'
