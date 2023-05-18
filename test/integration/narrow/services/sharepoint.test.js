@@ -41,9 +41,6 @@ jest.mock('../../../../app/config/sharepoint', () => {
 		documentLibrary: 'document_library'
 	}
 })
-
-
-
 describe('SharePoint functions', () => {
 	beforeEach(async () => {
 		jest.mock('@hapi/wreck')
