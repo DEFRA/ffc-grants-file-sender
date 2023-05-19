@@ -1,14 +1,38 @@
 
 const appInsight = require('../../../../../app/services/app-insights')
-const config = require('../../../../../app/config/server')
-const exp = require('constants')
 
-const startSpy = jest.fn()
-const appInsightSetupSpy = jest.spyOn(require('applicationinsights'), 'setup').mockReturnValue({
-  start: startSpy()
+jest.mock('../../../../../app/config/server', () => {
+  return {
+    appInsights: {
+      key: 'key',
+      role: 'role'
+    }
+  }
+})
+
+jest.mock('applicationinsights', () => {
+  return {
+    setup: jest.fn().mockReturnValue({
+      start: jest.fn(),
+    }),
+    defaultClient: {
+      context: {
+        keys: {
+          cloudRole: 'cloudRole'
+        },
+        tags: {
+          cloudRole: 'cloudRole'
+        }
+      },
+      trackException: jest.fn()
+    }
+  }
 })
 
 describe('get appInsight setup defined', () => {
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
   test('Should be defined', () => {
     expect(appInsight).toBeDefined()
   })
@@ -21,20 +45,35 @@ describe('get appInsight setup defined', () => {
   test('logException should not throw error', () => {
     expect(appInsight.logException(null, null)).toBe(undefined)
   })
-  it('TEST: setup is called without config present', () => {
-    appInsight.setup()
-    expect(appInsightSetupSpy).toHaveBeenCalledTimes(0)
-  })
-  it('TEST: setup is called with correct config present', () => {
-    jest.mock('../../../../../app/config/server', () => {
-      return {
-        appInsights: {
-          key: 'key',
-          role: 'role'
+
+  it('TEST: setup is called with config present', () => {
+    const trackExceptionSpy = jest.fn();
+    const applicationinsightsSetupSpy = jest.spyOn(require('applicationinsights'), 'setup').mockReturnValue({
+      start: jest.fn().mockImplementation(() => {
+        return {
+          context: {
+            keys: {
+              cloudRole: 'cloudRole'
+              },
+            tags: {
+              cloudRole: 'cloudRole'
+            }
+          },
+          trackException: trackExceptionSpy
         }
-      }
-    })
+      }),
+    });
     appInsight.setup()
-    expect(appInsightSetupSpy).toHaveBeenCalledTimes(0)
+    expect(applicationinsightsSetupSpy).toHaveBeenCalledTimes(1)
+    expect(trackExceptionSpy).toHaveBeenCalledTimes(0)
+
+  })
+  it('TEST: setup is called without config present', () => {
+    const applicationinsightsSpy = jest.spyOn(require('applicationinsights'), 'setup');
+    const defaultClientTrackExceptionSpy = jest.spyOn(require('applicationinsights').defaultClient, 'trackException');
+
+    appInsight.logException()
+    expect(applicationinsightsSpy).toHaveBeenCalledTimes(0)
+    expect(defaultClientTrackExceptionSpy).toHaveBeenCalledTimes(1)
   })
 })
