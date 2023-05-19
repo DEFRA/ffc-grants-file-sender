@@ -1,4 +1,3 @@
-const { expect } = require('@jest/globals')
 const { setup, uploadFile } = require('../../../../app/services/sharepoint')
 
 jest.mock('@pnp/nodejs-commonjs', () => {
@@ -6,7 +5,6 @@ jest.mock('@pnp/nodejs-commonjs', () => {
 		AdalFetchClient: jest.fn().mockImplementation(() => {
 			return {
 				acquireToken: () => {
-					console.log('here: ', 'HEEEY!! first mock');
 					return {
 						accessToken: 'access_token'
 					}
@@ -41,9 +39,6 @@ jest.mock('../../../../app/config/sharepoint', () => {
 		documentLibrary: 'document_library'
 	}
 })
-
-
-
 describe('SharePoint functions', () => {
 	beforeEach(async () => {
 		jest.mock('@hapi/wreck')
