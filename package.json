@@ -1,6 +1,6 @@
 {
   "name": "ffc-grants-file-sender",
-  "version": "1.8.6",
+  "version": "1.8.7",
   "description": "FFC Grants file sender microservice",
   "homepage": "https://github.com/DEFRA/ffc-grants-file-sender",
   "main": "app/index.js",
@@ -27,7 +27,8 @@
     "node-fetch": "^2.6.7",
     "adal-node": "^0.2.3",
     "jsonwebtoken": "^9.0.0",
-    "semver": "^7.5.2"
+    "semver": "^7.5.2",
+    "optionator": "^0.9.1"
   },
   "devDependencies": {
     "jest": "^27.2.5",
