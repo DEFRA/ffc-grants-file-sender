@@ -26,7 +26,8 @@
   "overrides": {
     "node-fetch": "^2.6.7",
     "adal-node": "^0.2.3",
-    "jsonwebtoken": "^9.0.0"
+    "jsonwebtoken": "^9.0.0",
+    "semver": "^7.5.2"
   },
   "devDependencies": {
     "jest": "^27.2.5",
