@@ -81,6 +81,8 @@ scripts/test
 
 # Run tests with file watch
 scripts/test -w
+# or
+scripts/test --watch
 ```
 
 ## Running the application
