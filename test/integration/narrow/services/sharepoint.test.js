@@ -1,6 +1,6 @@
 const { setup, uploadFile } = require('../../../../app/services/sharepoint')
 
-jest.mock('@pnp/nodejs', () => {
+jest.mock('@pnp/nodejs-commonjs', () => {
 	return {
 		AdalFetchClient: jest.fn().mockImplementation(() => {
 			return {
