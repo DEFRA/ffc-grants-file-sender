@@ -1,5 +1,5 @@
 const config = require('../config/sharepoint')
-const { AdalFetchClient } = require('@pnp/nodejs')
+const { AdalFetchClient } = require('@pnp/nodejs-commonjs')
 const wreck = require('@hapi/wreck')
 
 const tokenClient = new AdalFetchClient(config.tenantId, config.clientId, config.clientSecret)
