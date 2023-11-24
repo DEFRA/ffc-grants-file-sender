@@ -1,6 +1,6 @@
 const { setup, uploadFile } = require('../../../../app/services/sharepoint')
 
-jest.mock('@pnp/nodejs-commonjs', () => {
+jest.mock('@pnp/nodejs', () => {
 	return {
 		AdalFetchClient: jest.fn().mockImplementation(() => {
 			return {
@@ -42,7 +42,7 @@ jest.mock('../../../../app/config/sharepoint', () => {
 describe('SharePoint functions', () => {
 	beforeEach(async () => {
 		jest.mock('@hapi/wreck')
-		jest.mock('@pnp/nodejs-commonjs')
+		jest.mock('@pnp/nodejs')
 	})
 
 	afterAll(async () => {
