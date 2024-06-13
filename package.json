@@ -28,7 +28,8 @@
     "jsonwebtoken": "^9.0.2",
     "semver": "^7.5.4",
     "adal-node": "^0.2.3",
-    "axios": "^1.6.8"
+    "axios": "^1.6.8",
+    "@azure/msal-node": "2.9.2"
   },
   "devDependencies": {
     "jest": "^29.7.0",
