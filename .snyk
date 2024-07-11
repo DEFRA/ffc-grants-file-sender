@@ -10,6 +10,6 @@ ignore:
   SNYK-JS-AXIOS-6124857:
     - '*':
         reason: None Given
-        expires: 2024-01-17T15:04:10.010Z
+        expires: 2024-07-17T15:04:10.010Z
         created: 2023-12-18T15:04:10.015Z
 patch: {}
