@@ -5,11 +5,16 @@ ignore:
   SNYK-JS-FASTXMLPARSER-3325616:
     - '*':
         reason: None Given
-        expires: 2023-06-14T09:06:00.336Z
+        expires: 2024-08-14T09:06:00.336Z
         created: 2023-05-15T09:06:00.343Z
   SNYK-JS-AXIOS-6124857:
     - '*':
         reason: None Given
-        expires: 2024-01-17T15:04:10.010Z
+        expires: 2024-07-17T15:04:10.010Z
+        created: 2023-12-18T15:04:10.015Z
+  SNYK-JS-ASYNC-7414156:
+    - '*':
+        reason: None Given
+        expires: 2024-08-17T15:04:10.010Z
         created: 2023-12-18T15:04:10.015Z
 patch: {}
