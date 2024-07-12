@@ -21,7 +21,7 @@
     "applicationinsights": "^2.9.1",
     "ffc-messaging": "^2.10.0",
     "ffc-protective-monitoring": "^1.0.4",
-    "joi": "^17.11.0"
+    "joi": "^17.13.3"
   },
   "overrides": {
     "node-fetch": "^2.7.0",
