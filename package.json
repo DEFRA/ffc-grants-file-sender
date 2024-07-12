@@ -14,7 +14,7 @@
   "license": "OGL-UK-3.0",
   "dependencies": {
     "@azure/identity": "^4.3.0",
-    "@azure/storage-blob": "^12.17.0",
+    "@azure/storage-blob": "^12.23.0",
     "@hapi/hapi": "^20.2.2",
     "@hapi/wreck": "^18.0.1",
     "@pnp/nodejs-commonjs": "^2.15.0",
