@@ -16,7 +16,7 @@
     "@azure/identity": "^4.3.0",
     "@azure/storage-blob": "^12.17.0",
     "@hapi/hapi": "^20.2.2",
-    "@hapi/wreck": "^18.0.1",
+    "@hapi/wreck": "^18.1.0",
     "@pnp/nodejs-commonjs": "^2.15.0",
     "applicationinsights": "^2.9.1",
     "ffc-messaging": "^2.10.0",
